@@ -28,6 +28,25 @@ class Laporan_model extends CI_Model
         }
     }
 
+    public function insert()
+    {
+        $data = [
+            'menu_id' => $this->input->post('menu_id', true),
+        ];
+
+        $this->db->insert('laporan', $data);
+    }
+
+    public function update($id)
+    {
+        $data = array(
+            'role' => $this->input->post('role'),
+        );
+
+        $this->db->where('id', $id);
+        $this->db->update('user_role', $data);
+    }
+
     public function delete($id)
     {
         $this->db->delete('laporan', ['id' => $id]);
