@@ -3,18 +3,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Laporan extends CI_Controller
 {
-    public function index()
+    public function __construct()
     {
-        $data['title'] = 'Dashboard';
-        $this->load->view('template/header', $data);
-        $this->load->view('template/sidebar');
-        $this->load->view('index');
-        $this->load->view('template/footer');
+        parent::__construct();
+        $this->load->model('laporan_model', 'laporan');
     }
 
     public function masuk()
     {
         $data['title'] = 'Laporan Masuk';
+        $data['laporan'] = $this->laporan->getLaporan(1, 1, null);
+
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');
         $this->load->view('laporan/masuk');
@@ -24,6 +23,8 @@ class Laporan extends CI_Controller
     public function terima()
     {
         $data['title'] = 'Laporan Diterima';
+        $data['laporan'] = $this->laporan->getLaporan(1, 2, null);
+
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');
         $this->load->view('laporan/diterima');
@@ -32,7 +33,9 @@ class Laporan extends CI_Controller
 
     public function proses()
     {
-        $data['title'] = 'Laporan Diterima';
+        $data['title'] = 'Laporan Diproses';
+        $data['laporan'] = $this->laporan->getLaporan(1, 3, null);
+
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');
         $this->load->view('laporan/diproses');
@@ -41,7 +44,9 @@ class Laporan extends CI_Controller
 
     public function selesai()
     {
-        $data['title'] = 'Laporan Diterima';
+        $data['title'] = 'Laporan Selesai';
+        $data['laporan'] = $this->laporan->getLaporan(2, 4, 0);
+
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');
         $this->load->view('laporan/selesai');

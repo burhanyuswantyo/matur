@@ -22,25 +22,26 @@
                                     <tr>
                                         <th>#</th>
                                         <th>NIM</th>
+                                        <th>Password</th>
                                         <th>Nama</th>
-                                        <th>Kategori</th>
-                                        <th>Deskripsi</th>
-                                        <th>Gambar</th>
+                                        <th>Program Studi</th>
+                                        <th>Foto</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $i = 1; ?>
-                                    <?php foreach ($laporan as $l) : ?>
+                                    <?php foreach ($user as $u) : ?>
                                         <tr>
                                             <th scope="row"><?= $i; ?></th>
-                                            <td><?= $l['nim']; ?></td>
-                                            <td><?= $l['nama']; ?></td>
-                                            <td><?= $l['kategori']; ?></td>
-                                            <td><?= $l['deskripsi']; ?></td>
-                                            <td><?= $l['gambar']; ?></td>
+                                            <td><?= $u['nim'];  ?></td>
+                                            <td><?= $u['password'];  ?></td>
+                                            <td><?= $u['nama'];  ?></td>
+                                            <td><?= $u['prodi'];  ?></td>
+                                            <td><?= $u['foto'];  ?></td>
                                             <td class="text-center">
-                                                <a href="<?= base_url('actions/proses/') . $l['id']; ?>" class="btn btn-success btn-sm">Proses</a>
+                                                <a href="" class="btn btn-success btn-sm">Edit</a>
+                                                <a href="" class="btn btn-danger btn-sm">Hapus</a>
                                             </td>
                                         </tr>
                                         <?php $i++; ?>

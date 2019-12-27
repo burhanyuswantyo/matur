@@ -45,16 +45,19 @@
                         <img src="<?php base_url(); ?>assets/images/big/icon.png" alt="wrapkit">
                     </div>
                     <h2 class="mt-3 text-center">Login Admin</h2>
-                    <form class="mt-4">
+                    <?php echo $this->session->flashdata('message'); ?>
+                    <form class="mt-4" method="post" action="<?= base_url('auth'); ?>">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control" id="uname" type="text" placeholder="Masukkan NIK">
+                                    <input class="form-control" id="username" name="username" type="text" placeholder="Masukkan NIK">
+                                    <?php echo form_error('username', '<small class="text-danger ml-2">', '</small>'); ?>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control" id="pwd" type="password" placeholder="Masukkan Password">
+                                    <input class="form-control" id="password" name="password" type="password" placeholder="Masukkan Password">
+                                    <?php echo form_error('password', '<small class="text-danger ml-2">', '</small>'); ?>
                                 </div>
                             </div>
                             <div class="col-lg-12 text-center p-3">

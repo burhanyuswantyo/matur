@@ -15,28 +15,36 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Laporan Masuk</h4>
+                        <h4 class="card-title"><?= $title; ?></h4>
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead class="bg-primary text-white">
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">Deskripsi</th>
-                                        <th scope="col">Gambar</th>
-                                        <th scope="col" class="text-center">Action</th>
+                                        <th>#</th>
+                                        <th>NIM</th>
+                                        <th>Nama</th>
+                                        <th>Kategori</th>
+                                        <th>Deskripsi</th>
+                                        <th>Gambar</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td class="text-center">
-                                            <a href="" class="btn btn-success">Selesai</a>
-                                        </td>
-                                    </tr>
+                                    <?php $i = 1; ?>
+                                    <?php foreach ($laporan as $l) : ?>
+                                        <tr>
+                                            <th scope="row"><?= $i; ?></th>
+                                            <td><?= $l['nim']; ?></td>
+                                            <td><?= $l['nama']; ?></td>
+                                            <td><?= $l['kategori']; ?></td>
+                                            <td><?= $l['deskripsi']; ?></td>
+                                            <td><?= $l['gambar']; ?></td>
+                                            <td class="text-center">
+                                                <a href="<?= base_url('actions/terima/') . $l['id']; ?>" class="btn btn-success btn-sm">Selesai</a>
+                                            </td>
+                                        </tr>
+                                        <?php $i++; ?>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

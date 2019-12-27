@@ -18,9 +18,9 @@
                         <li class="list-divider"></li>
 
                         <li class="nav-small-cap"><span class="hide-menu">Kelola Aplikasi</span></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="<?php base_url(''); ?>" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">User</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="<?php base_url(''); ?>" aria-expanded="false"><i class="fa fa-list"></i><span class="hide-menu">Kategori</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="<?php base_url('auth/logout'); ?>" aria-expanded="false"><i class="fa fa-power-off"></i><span class="hide-menu">Logout</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="<?= base_url('user'); ?>" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">User</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="<?= base_url('kategori'); ?>" aria-expanded="false"><i class="fa fa-list"></i><span class="hide-menu">Kategori</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="<?= base_url('auth/logout'); ?>" aria-expanded="false"><i class="fa fa-power-off"></i><span class="hide-menu">Logout</span></a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
