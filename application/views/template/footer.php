@@ -30,6 +30,7 @@
             <script src="<?= base_url(); ?>dist/js/sidebarmenu.js"></script>
             <!--Custom JavaScript -->
             <script src="<?= base_url(); ?>dist/js/custom.min.js"></script>
+            <script src="<?= base_url(); ?>dist/js/script.js"></script>
             <!--This page JavaScript -->
             <script src="<?= base_url(); ?>assets/extra-libs/c3/d3.min.js"></script>
             <script src="<?= base_url(); ?>assets/extra-libs/c3/c3.min.js"></script>
