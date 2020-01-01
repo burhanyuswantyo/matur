@@ -110,7 +110,7 @@ $config['rest_realm'] = 'REST API';
 |           authorization key
 |
 */
-$config['rest_auth'] = 'basic';
+$config['rest_auth'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -324,7 +324,7 @@ $config['rest_keys_table'] = 'keys';
 |   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 |
 */
-$config['rest_enable_keys'] = TRUE;
+$config['rest_enable_keys'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -487,7 +487,7 @@ $config['rest_logs_json_params'] = FALSE;
 |
 | See application/controllers/api/example.php for examples
 */
-$config['rest_enable_limits'] = TRUE;
+$config['rest_enable_limits'] = false;
 
 /*
 |--------------------------------------------------------------------------
