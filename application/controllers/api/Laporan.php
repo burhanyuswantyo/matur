@@ -15,13 +15,40 @@ class Laporan extends REST_Controller
         $this->methods['index_delete']['limit'] = 2;
     }
 
+    public function login_post()
+    {
+
+        $nim = $this->post('nim');
+        $password = $this->post('password');
+        $api = $this->api->login($nim, $password);
+
+
+        if ($api) {
+            $this->response([
+                'status' => true,
+                'data' => $api
+            ], REST_Controller::HTTP_OK);
+        } else {
+            $this->response([
+                'status' => false,
+                'message' => 'id not found'
+            ], REST_Controller::HTTP_NOT_FOUND);
+        }
+    }
+
     public function index_get()
     {
         $user_id = $this->get('user_id');
-        if ($user_id == null) {
-            $api = $this->api->getLaporan();
+        $status_id = $this->get('status_id');
+
+        if ($user_id == null && $status_id == null) {
+            $api = $this->api->getLaporan(null, null);
+        } elseif ($user_id != null && $status_id == null) {
+            $api = $this->api->getLaporan($user_id, null);
+        } elseif ($user_id == null && $status_id != null) {
+            $api = $this->api->getLaporan(null, $status_id);
         } else {
-            $api = $this->api->getLaporan($user_id);
+            $api = $this->api->getLaporan($user_id, $status_id);
         }
 
 
