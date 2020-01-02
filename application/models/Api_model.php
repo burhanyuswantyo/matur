@@ -2,29 +2,47 @@
 
 class Api_model extends CI_Model
 {
-    public function getLaporan($user_id = null)
+    public function login($nim, $password)
     {
-        $query = "SELECT `l`.`id`, `l`.`deskripsi`, `l`.`gambar`, `k`.`kategori`, `s`.`status`, `s`.`icon`
-                    FROM `laporan` `l`
-                    JOIN `kategori` `k`
-                    ON `l`.`kategori_id` = `k`.`id`
-                    JOIN `status` `s`
-                    ON `l`.`status_id` = `s`.`id`
-                    ";
+        $this->db->where('nim', $nim);
+        $this->db->where('password', $password);
 
-        $query2 = "SELECT `l`.`id`, `l`.`deskripsi`, `l`.`gambar`, `k`.`kategori`, `s`.`status`, `s`.`icon`
-                    FROM `laporan` `l`
-                    JOIN `kategori` `k`
-                    ON `l`.`kategori_id` = `k`.`id`
-                    JOIN `status` `s`
-                    ON `l`.`status_id` = `s`.`id`
-                    WHERE `l`.`user_id` = $user_id
-                    ";
+        return $this->db->get('user')->result_array();
+    }
 
-        if ($user_id === null) {
+    public function getLaporan($user_id = null, $status_id = null)
+    {
+        $query = "SELECT `laporan`.`id`, `laporan`.`deskripsi`, `laporan`.`gambar`, `kategori`.`kategori`, `status`.`status`, `status`.`icon`
+                    FROM `laporan`
+                    JOIN `kategori`
+                    ON `laporan`.`kategori_id` = `kategori`.`id`
+                    JOIN `status`
+                    ON `laporan`.`status_id` = `status`.`id`";
+
+        $query2 = "SELECT `laporan`.`id`, `laporan`.`deskripsi`, `laporan`.`gambar`, `kategori`.`kategori`, `status`.`status`, `status`.`icon`
+                    FROM `laporan`
+                    JOIN `kategori`
+                    ON `laporan`.`kategori_id` = `kategori`.`id`
+                    JOIN `status`
+                    ON `laporan`.`status_id` = `status`.`id`
+                    WHERE `laporan`.`user_id` = $user_id";
+
+        $query3 = "SELECT `laporan`.`id`, `laporan`.`deskripsi`, `laporan`.`gambar`, `kategori`.`kategori`, `status`.`status`, `status`.`icon`
+                    FROM `laporan`
+                    JOIN `kategori`
+                    ON `laporan`.`kategori_id` = `kategori`.`id`
+                    JOIN `status`
+                    ON `laporan`.`status_id` = `status`.`id`
+                    WHERE `laporan`.`status_id` = $status_id";
+
+        if ($user_id == null && $status_id == null) {
             return $this->db->query($query)->result_array();
-        } else {
+        } elseif ($user_id != null && $status_id == null) {
             return $this->db->query($query2)->result_array();
+        } elseif ($user_id == null && $status_id != null) {
+            return $this->db->query($query3)->result_array();
+        } else {
+            return $this->db->query($query3)->result_array();
         }
     }
 
