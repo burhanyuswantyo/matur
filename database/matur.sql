@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Des 2019 pada 15.35
+-- Waktu pembuatan: 02 Jan 2020 pada 02.13
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.3.11
 
@@ -65,7 +65,8 @@ INSERT INTO `kategori` (`id`, `kategori`) VALUES
 (6, 'Lampu'),
 (7, 'Kursi'),
 (8, 'Laboratorium'),
-(9, 'Fasilitas Lainnya');
+(9, 'Fasilitas Lainnya'),
+(10, 'Kantin');
 
 -- --------------------------------------------------------
 
@@ -295,7 +296,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `keys`
