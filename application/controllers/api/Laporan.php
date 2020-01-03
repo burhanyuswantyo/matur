@@ -34,6 +34,18 @@ class Laporan extends REST_Controller
                 'message' => 'id not found'
             ], REST_Controller::HTTP_NOT_FOUND);
         }
+        // if ($api) {
+        //     $this->response([
+        //         'status' => 200,
+        //         'data' => $api,
+        //         'message' => 'Login berhasil'
+        //     ], REST_Controller::HTTP_OK);
+        // } else {
+        //     $this->response([
+        //         'status' => 502,
+        //         'message' => 'id not found'
+        //     ], REST_Controller::HTTP_BAD_REQUEST);
+        // }
     }
 
     public function index_get()
@@ -55,7 +67,7 @@ class Laporan extends REST_Controller
         if ($api) {
             $this->response([
                 'status' => true,
-                'data' => $api
+                'data' => $api,
             ], REST_Controller::HTTP_OK);
         } else {
             $this->response([
@@ -138,6 +150,23 @@ class Laporan extends REST_Controller
                 'status' => false,
                 'message' => 'Laporan gagal dirubah!'
             ], REST_Controller::HTTP_BAD_REQUEST);
+        }
+    }
+
+    public function kategori_get()
+    {
+        $api = $this->api->getKategori();
+
+        if ($api) {
+            $this->response([
+                'status' => true,
+                'data' => $api,
+            ], REST_Controller::HTTP_OK);
+        } else {
+            $this->response([
+                'status' => false,
+                'message' => 'id not found'
+            ], REST_Controller::HTTP_NOT_FOUND);
         }
     }
 }
