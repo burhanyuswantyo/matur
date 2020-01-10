@@ -34,18 +34,6 @@ class Laporan extends REST_Controller
                 'message' => 'id not found'
             ], REST_Controller::HTTP_NOT_FOUND);
         }
-        // if ($api) {
-        //     $this->response([
-        //         'status' => 200,
-        //         'data' => $api,
-        //         'message' => 'Login berhasil'
-        //     ], REST_Controller::HTTP_OK);
-        // } else {
-        //     $this->response([
-        //         'status' => 502,
-        //         'message' => 'id not found'
-        //     ], REST_Controller::HTTP_BAD_REQUEST);
-        // }
     }
 
     public function index_get()
@@ -106,26 +94,60 @@ class Laporan extends REST_Controller
 
     public function index_post()
     {
+        $gambar = base64_decode($this->input->post('gambar'));
+        $file_name = 'img' . rand(9, 9999) . '.jpg';
+
+        $path = './upload/' . $file_name;
         $data = [
             'deskripsi' => $this->post('deskripsi'),
-            'gambar' => $this->post('gambar'),
+            'gambar' => 'http://192.168.1.152/matur/upload/' . $file_name,
             'date_created' => $this->post('date_created'),
             'user_id' => $this->post('user_id'),
             'kategori_id' => $this->post('kategori_id'),
             'status_id' => $this->post('status_id')
         ];
 
-        if ($this->api->insert($data) > 0) {
-            $this->response([
-                'status' => true,
-                'message' => 'Laporan berhasil dibuat.'
-            ], REST_Controller::HTTP_CREATED);
+        if (file_put_contents($path, $gambar)) {
+            if ($this->api->insert($data) > 0) {
+                echo json_encode(array('response' => 'Success'));
+            }
         } else {
-            $this->response([
-                'status' => false,
-                'message' => 'Laporan gagal dibuat!'
-            ], REST_Controller::HTTP_BAD_REQUEST);
+            echo json_encode(array("response" => "Image not uploaded"));
         }
+        // $config = array();
+        // $config['upload_path'] = './upload/';
+        // $config['allowed_types'] = 'jpg|png';
+        // $config['max_size'] = '5000';
+        // $this->load->library('upload', $config, 'gambar');
+        // $this->gambar->initialize($config);
+        // $gambar['upload'] = $this->gambar->do_upload('gambar');
+        // $gambar['name'] = $this->gambar->data('file_name');
+        // $file_name = 'http://192.168.1.152/matur/upload/' . $gambar['name'];
+
+
+        // $data = [
+        //     'deskripsi' => $this->post('deskripsi'),
+        //     'gambar' => $file_name,
+        //     'date_created' => $this->post('date_created'),
+        //     'user_id' => $this->post('user_id'),
+        //     'kategori_id' => $this->post('kategori_id'),
+        //     'status_id' => $this->post('status_id')
+        // ];
+
+
+
+        // if ($this->api->insert($data) > 0) {
+        //     file_put_contents($path, base64_decode($gambar));
+        //     $this->response([
+        //         'status' => true,
+        //         'message' => 'Laporan berhasil dibuat.'
+        //     ], REST_Controller::HTTP_CREATED);
+        // } else {
+        //     $this->response([
+        //         'status' => false,
+        //         'message' => 'Laporan gagal dibuat!'
+        //     ], REST_Controller::HTTP_BAD_REQUEST);
+        // }
     }
 
     public function index_put()

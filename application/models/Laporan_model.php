@@ -31,7 +31,8 @@ class Laporan_model extends CI_Model
                     FROM `laporan` JOIN `user`
                     ON `laporan`.`user_id` = `user`.`id`
                     JOIN `kategori`
-                    ON `laporan`.`kategori_id` = `kategori`.`id`";
+                    ON `laporan`.`kategori_id` = `kategori`.`id`
+                    ORDER BY `laporan`.`id` DESC";
 
         return $this->db->query($query)->result_array();
     }

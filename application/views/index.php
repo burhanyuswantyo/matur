@@ -77,7 +77,7 @@
                                             <td><?= date('l, d F Y', $l['date_created']); ?></td>
                                             <td><?= $l['kategori']; ?></td>
                                             <td><?= $l['deskripsi']; ?></td>
-                                            <td><?= $l['gambar']; ?></td>
+                                            <td><img width="200px" src="<?= $l['gambar']; ?>" alt="image.jpg"></td>
                                             <td class="text-center">
                                                 <?php if ($l['status_id'] == 0) { ?>
                                                     <label style="display:inline-block; width:80px" class="badge badge-danger">Ditolak</label>
