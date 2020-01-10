@@ -100,7 +100,7 @@ class Laporan extends REST_Controller
         $path = './upload/' . $file_name;
         $data = [
             'deskripsi' => $this->post('deskripsi'),
-            'gambar' => 'http://192.168.1.152/matur/upload/' . $file_name,
+            'gambar' => 'http://matur.mikelas.online/upload' . $file_name,
             'date_created' => $this->post('date_created'),
             'user_id' => $this->post('user_id'),
             'kategori_id' => $this->post('kategori_id'),

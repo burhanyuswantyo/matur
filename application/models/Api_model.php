@@ -10,7 +10,7 @@ class Api_model extends CI_Model
         return $this->db->get('user')->row_array();
     }
 
-    public function getLaporan($user_id = null, $status_id = null)
+    public function getLaporan($user_id = null, $status_id = null, $id = null)
     {
         $query = "SELECT `laporan`.`id`, `laporan`.`deskripsi`, `laporan`.`gambar`, `kategori`.`kategori`, `status`.`status`, `status`.`icon`
                     FROM `laporan`
