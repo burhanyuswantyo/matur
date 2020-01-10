@@ -10,7 +10,7 @@ class Api_model extends CI_Model
         return $this->db->get('user')->row_array();
     }
 
-    public function getLaporan($user_id = null, $status_id = null, $id = null)
+    public function getLaporan($user_id = null, $status_id = null)
     {
         $query = "SELECT `laporan`.`id`, `laporan`.`deskripsi`, `laporan`.`gambar`, `kategori`.`kategori`, `status`.`status`, `status`.`icon`
                     FROM `laporan`
@@ -38,6 +38,16 @@ class Api_model extends CI_Model
                     WHERE `laporan`.`status_id` = $status_id
                     ORDER BY `laporan`.`id` DESC";
 
+        $query4 = "SELECT `laporan`.`id`, `laporan`.`deskripsi`, `laporan`.`gambar`, `kategori`.`kategori`, `status`.`status`, `status`.`icon`
+                    FROM `laporan`
+                    JOIN `kategori`
+                    ON `laporan`.`kategori_id` = `kategori`.`id`
+                    JOIN `status`
+                    ON `laporan`.`status_id` = `status`.`id`
+                    WHERE `laporan`.`status_id` = $status_id
+                    AND `laporan`.`user_id` = $user_id
+                    ORDER BY `laporan`.`id` DESC";
+
         if ($user_id == null && $status_id == null) {
             return $this->db->query($query)->result_array();
         } elseif ($user_id != null && $status_id == null) {
@@ -45,7 +55,7 @@ class Api_model extends CI_Model
         } elseif ($user_id == null && $status_id != null) {
             return $this->db->query($query3)->result_array();
         } else {
-            return $this->db->query($query3)->result_array();
+            return $this->db->query($query4)->result_array();
         }
     }
 
