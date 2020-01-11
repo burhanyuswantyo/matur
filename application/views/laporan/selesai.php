@@ -38,7 +38,7 @@
                                             <td><?= $l['nama']; ?></td>
                                             <td><?= $l['kategori']; ?></td>
                                             <td><?= $l['deskripsi']; ?></td>
-                                            <td><?= $l['gambar']; ?></td>
+                                            <td><img width="200px" src="<?= $l['gambar']; ?>" alt="image.jpg"></td>
                                             <td class="text-center">
                                                 <?php if ($l['status_id'] == 4) { ?>
                                                     <label class="badge badge-success">Selesai</label>

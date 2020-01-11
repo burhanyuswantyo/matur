@@ -38,7 +38,7 @@
                                             <td><?= $l['nama']; ?></td>
                                             <td><?= $l['kategori']; ?></td>
                                             <td><?= $l['deskripsi']; ?></td>
-                                            <td><?= $l['gambar']; ?></td>
+                                            <td><img width="200px" src="<?= $l['gambar']; ?>" alt="image.jpg"></td>
                                             <td class="text-center">
                                                 <a href="<?= base_url('actions/proses/') . $l['id']; ?>" class="btn btn-success btn-sm">Proses</a>
                                             </td>
