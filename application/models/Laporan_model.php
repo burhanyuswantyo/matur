@@ -10,7 +10,8 @@ class Laporan_model extends CI_Model
                     ON `laporan`.`user_id` = `user`.`id`
                     JOIN `kategori`
                     ON `laporan`.`kategori_id` = `kategori`.`id`
-                    WHERE `laporan`.`status_id` = $status";
+                    WHERE `laporan`.`status_id` = $status
+                    ORDER BY `laporan`.`id` DESC";
         } else {
             $query = "SELECT `laporan`.`id`, `laporan`.`deskripsi`, `laporan`.`gambar`, `laporan`.`status_id`, `kategori`.`kategori`, `user`.`nim`, `user`.`nama`
                     FROM `laporan` JOIN `user`
@@ -18,7 +19,8 @@ class Laporan_model extends CI_Model
                     JOIN `kategori`
                     ON `laporan`.`kategori_id` = `kategori`.`id`
                     WHERE `laporan`.`status_id` = $status
-                    OR `laporan`.`status_id` = $status2";
+                    OR `laporan`.`status_id` = $status2
+                    ORDER BY `laporan`.`id` DESC";
         }
 
 
